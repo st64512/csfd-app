@@ -1,0 +1,19 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+	<div id="content">
+		<h1>Filmy</h1>
+		<div><a n:href="Movie:create">Přidat nový film</a></div>
+		{foreach $movies as $movie}
+			<a n:href="Movie:detail $movie->id">
+				<div class="movie">
+					<div class="id"> {$movie->id} </div>
+					<div class="name"> {$movie->name} </div>
+				</div>
+			</a>
+		{/foreach}
+	</div>
+{/block}
+
+
+
