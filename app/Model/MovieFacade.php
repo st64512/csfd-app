@@ -8,7 +8,7 @@ final class MovieFacade
     use Nette\SmartObject;
 
     private Nette\Database\Explorer $database;
-    private string $databaseName = 'brands';
+    private string $databaseName = 'movies';
 
     public function __construct(Nette\Database\Explorer $database)
     {

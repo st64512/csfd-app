@@ -7,8 +7,10 @@
 		{foreach $movies as $movie}
 			<a n:href="Movie:detail $movie->id">
 				<div class="movie">
-					<div class="id"> {$movie->id} </div>
-					<div class="name"> {$movie->name} </div>
+					<div class="poster">
+						<img src="{$movie->poster}" width="150" height="200" alt="poster {$movie->title}">
+					</div>
+					<div class="name"> {$movie->title} </div>
 				</div>
 			</a>
 		{/foreach}

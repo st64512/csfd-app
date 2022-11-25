@@ -1,13 +1,29 @@
 {block content}
     <p><a n:href="Homepage:default">← zpět na výpis filmů</a></p>
-    <h1 n:block="title">{$movie->name}</h1>
-
-
-    <div class="movie-detail">
-        <div class="id"> {$movie->id} </div>
-        <div class="name"> {$movie->name} </div>
-    </div>
+    <h1 n:block="title">{$movie->title} <span class="year">({$movie->year})</span></h1>
 
     <a n:href="Movie:edit $movie->id">Upravit film</a>
+
+    <div class="movie-detail">
+        <img src="{$movie->photo}" alt="obrázek {$movie->title}">
+        <div class="json-detail genres">
+            {foreach $genres as $genre}
+                <div class="genre">{$genre}</div>
+            {/foreach}
+        </div>
+        <div class="description"> {$movie->description} </div>
+        <div class="json-detail directors">
+            <h3>Režiséři: </h3>
+            {foreach $directors as $director}
+                <div class="director">{$director} </div>
+            {/foreach}
+        </div>
+        <div class="json-detail actors">
+            <h3>Herci:</h3>
+            {foreach $actors as $actor}
+                <div class="actor">{$actor} </div>
+            {/foreach}
+        </div>
+    </div>
 {/block}
 
