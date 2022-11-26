@@ -43,9 +43,9 @@ function fillForm(data) {
 
 $("#movie-search").keyup(
     function (event) {
-        $("#results").empty();
         csfd.search(event.target.value)
             .then((search) => {
+                $("#results").empty();
                 search.movies.forEach( (movie) => {
                     var newElem = $("<li id='" + movie.id + "'>" + movie.title + " (" + movie.year + ")<li>");
                     newElem.on('click', (event) => {
