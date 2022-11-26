@@ -37,18 +37,12 @@ final class MoviePresenter extends Nette\Application\UI\Presenter
             ->setRequired();
         $form->addInteger('year', 'Rok:')
             ->setRequired();
-        $form->addTextArea('description', 'Děj:')
-            ->setRequired();
-        $form->addText('photo', 'Odkaz na obrázek:')
-            ->setRequired();
-        $form->addText('poster', 'Odkaz na poster:')
-            ->setRequired();
-        $form->addText('genres', 'Žánry:')
-            ->setRequired();
-        $form->addText('directors', 'Režiséři:')
-            ->setRequired();
-        $form->addText('actors', 'Herci:')
-            ->setRequired();
+        $form->addTextArea('description', 'Děj:');
+        $form->addText('photo', 'Odkaz na obrázek:');
+        $form->addText('poster', 'Odkaz na poster:');
+        $form->addText('genres', 'Žánry:');
+        $form->addText('directors', 'Režiséři:');
+        $form->addText('actors', 'Herci:');
 
         $form->addSubmit('send', 'Uložit změny');
 

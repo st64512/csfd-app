@@ -18,7 +18,8 @@
   "homepage": "https://github.com/st64512/csfd-app#readme",
   "dependencies": {
     "materialize-css": "^1.0.0-rc.2",
-    "naja": "^2.1.4"
+    "naja": "^2.1.4",
+    "node-csfd-api": "^2.4.5"
   },
   "devDependencies": {
     "css-loader": "^6.7.1",

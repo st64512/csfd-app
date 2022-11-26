@@ -22,3 +22,14 @@ Ve složce `config/local.neon`
 	user: *jméno uživatele*
 	password: *heslo k databázi*
 
+Vizualizace databáze v PhpStorm
+-------------------------------
+
+    Data source: MySQL
+    Host: localhost
+    Port: 3306
+    User: root
+    Password:
+    Database: csfd
+
+

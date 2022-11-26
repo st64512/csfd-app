@@ -1,0 +1,15 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-content {
+    display: contents;
+
+    #results {
+      position: absolute;
+      background-color: white;
+      width: 100%;
+    }
+  }
+
+}
