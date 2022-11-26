@@ -47,7 +47,7 @@ $("#movie-search").keyup(
             .then((search) => {
                 $("#results").empty();
                 search.movies.forEach( (movie) => {
-                    var newElem = $("<li id='" + movie.id + "'>" + movie.title + " (" + movie.year + ")<li>");
+                    var newElem = $("<li id='" + movie.id + "'>" + movie.title + " (" + movie.year + ")</li>");
                     newElem.on('click', (event) => {
                         $("#movie-search").val('');
                         $("#results").empty();
