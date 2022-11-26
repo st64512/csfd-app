@@ -2,6 +2,7 @@
 namespace App\Presenters;
 
 use App\Model\MovieFacade;
+use App\Utility\Utilities;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Utils\Json;
@@ -60,9 +61,9 @@ final class MoviePresenter extends Nette\Application\UI\Presenter
     {
         $movieId = $this->getParameter('movieId');
 
-        $data['genres'] = $this->solveStringToJsonString($data['genres']);
-        $data['actors'] = $this->solveStringToJsonString($data['actors']);
-        $data['directors'] = $this->solveStringToJsonString($data['directors']);
+        $data['genres'] = Utilities::solveStringToJsonString($data['genres']);
+        $data['actors'] =  Utilities::solveStringToJsonString($data['actors']);
+        $data['directors'] =  Utilities::solveStringToJsonString($data['directors']);
 
         if ($movieId) {
             $movie = $this->facade->editMovie($movieId, $data);
@@ -85,28 +86,10 @@ final class MoviePresenter extends Nette\Application\UI\Presenter
 
         $movieArray = $movie->toArray();
 
-        $movieArray['genres'] = $this->solveArrayToString($movieArray, 'genres');
-        $movieArray['actors'] = $this->solveArrayToString($movieArray, 'actors');
-        $movieArray['directors'] = $this->solveArrayToString($movieArray, 'directors');
+        $movieArray['genres'] =  Utilities::solveArrayToString($movieArray, 'genres');
+        $movieArray['actors'] =  Utilities::solveArrayToString($movieArray, 'actors');
+        $movieArray['directors'] =  Utilities::solveArrayToString($movieArray, 'directors');
 
         $this->getComponent('movieForm')->setDefaults($movieArray);
-    }
-
-    private function solveArrayToString(array $data,string $key) : string
-    {
-        $dataString = "";
-        $decodedJsonData = Json::decode($data[$key]);
-        foreach ($decodedJsonData as $decodedData) {
-            $dataString .= ' ' . $decodedData . ',';
-        }
-        return trim($dataString, ' ,');
-    }
-    private function solveStringToJsonString(string $dataString) : string {
-        $data = explode(',' ,$dataString);
-        foreach ($data as $key => $d) {
-            $data[$key] = trim($d, ' ');
-        }
-
-        return Json::encode($data);
     }
 }
