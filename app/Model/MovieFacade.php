@@ -15,11 +15,12 @@ final class MovieFacade
         $this->database = $database;
     }
 
-    public function getMovies()
+    public function getMovies(int $limit, int $offset)
     {
         return $this->database
             ->table($this->databaseName)
-            ->order('id DESC');
+            ->order('id DESC')
+            ->limit($limit, $offset);
     }
 
     public function getMovie(int $id): ?Nette\Database\Table\ActiveRow
@@ -41,5 +42,15 @@ final class MovieFacade
         $movie = $this->getMovie($id);
         $movie->update($data);
         return $movie;
+    }
+
+    public function getMoviesCount() : int
+    {
+        return $this->database->fetchField('SELECT COUNT(*) FROM movies');
+    }
+
+    public function deleteMovie(int $id)
+    {
+        $this->database->table($this->databaseName)->where('id', $id)->delete();
     }
 }

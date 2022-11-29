@@ -2,7 +2,7 @@
 namespace App\Presenters;
 
 use App\Model\MovieFacade;
-use App\Utility\Utilities;
+use App\Utils\Utilities;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Utils\Json;
@@ -11,7 +11,7 @@ final class MoviePresenter extends Nette\Application\UI\Presenter
 {
     private MovieFacade $facade;
 
-    public function __construct( MovieFacade $facade)
+    public function __construct(MovieFacade $facade)
     {
         $this->facade = $facade;
     }
@@ -85,5 +85,11 @@ final class MoviePresenter extends Nette\Application\UI\Presenter
         $movieArray['directors'] =  Utilities::solveArrayToString($movieArray, 'directors');
 
         $this->getComponent('movieForm')->setDefaults($movieArray);
+    }
+
+    public function handleRemoveMovie(int $id) : void
+    {
+        $this->facade->deleteMovie($id);
+        $this->redirect('Homepage:default');
     }
 }

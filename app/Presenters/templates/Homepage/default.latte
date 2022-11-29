@@ -1,19 +1,74 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-	<div id="content">
-		<h1>Filmy</h1>
-		<div><a n:href="Movie:create">Přidat nový film</a></div>
-		{foreach $movies as $movie}
-			<a n:href="Movie:detail $movie->id">
-				<div class="movie">
-					<div class="poster">
-						<img src="{$movie->poster}" width="150" height="200" alt="poster {$movie->title}">
-					</div>
-					<div class="name"> {$movie->title} </div>
-				</div>
-			</a>
-		{/foreach}
+	<div class="main">
+		<div class="main-title">
+			<h1 n:block="title">Filmy</h1>
+		</div>
+		<div class="list">
+			<div class="list-header">
+				<a n:href="Movie:create" id="add-brand-button" class="waves-effect waves-light btn">
+					<i class="material-icons left">add</i>
+					Přidat film
+				</a>
+			</div>
+			<div class="list-body">
+				{foreach $movies as $movie}
+					<a n:href="Movie:detail $movie->id">
+						<div class="movie">
+							<div class="poster">
+								<img src="{$movie->poster}" alt="poster {$movie->title}">
+							</div>
+							<div class="name"> {$movie->title} </div>
+						</div>
+					</a>
+				{/foreach}
+			</div>
+			<div class="list-footer">
+				<ul class="pagination">
+					{if !$paginator->isFirst()}
+						<li class="waves-effect">
+							<a n:href="default, $paginator->page-1, $itemsPerPage">
+								<i class="tiny material-icons">chevron_left</i>
+							</a>
+						</li>
+						<li class="waves-effect"><a n:href="default, 1, $itemsPerPage"> 1 </a></li>
+					{/if}
+
+					{if $paginator->getPage() - 1 >= 4}
+						<span>...</span>
+					{/if}
+					{foreach $paginator->getNearPages() as $page}
+						{if $page == $paginator->getPage()}
+							<li class="active"><a href="#">{$page}</a></li>
+						{else}
+							<li class="waves-effect"><a n:href="default, $page, $itemsPerPage">{$page}</a></li>
+						{/if}
+					{/foreach}
+					{if $paginator->getPageCount() - $paginator->getPage() >= 4}
+						<span>...</span>
+					{/if}
+
+					{if !$paginator->isLast()}
+						<li class="waves-effect"><a n:href="default, $paginator->getPageCount(), $itemsPerPage">{$paginator->getPageCount()}</a></li>
+						<li class="waves-effect">
+							<a n:href="default, $paginator->page+1, $itemsPerPage">
+								<i class="small material-icons">chevron_right</i>
+							</a>
+						</li>
+					{/if}
+				</ul>
+				<ul class="pagination">
+					{foreach $itemsCount as $itemCount}
+						{if $itemCount == $itemsPerPage}
+							<li class="active"><a href="#">{$itemCount}</a></li>
+						{else}
+							<li class="waves-effect"><a n:href="default, $page, $itemCount">{$itemCount}</a></li>
+						{/if}
+					{/foreach}
+				</ul>
+			</div>
+		</div>
 	</div>
 {/block}
 

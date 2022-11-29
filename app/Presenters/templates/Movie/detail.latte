@@ -3,6 +3,7 @@
     <h1 n:block="title">{$movie->title} <span class="year">({$movie->year})</span></h1>
 
     <a n:href="Movie:edit $movie->id">Upravit film</a>
+    <a n:href="removeMovie! $movie->id">Smazat film</a>
 
     <div class="movie-detail">
         <img src="{$movie->photo}" alt="obrázek {$movie->title}">
