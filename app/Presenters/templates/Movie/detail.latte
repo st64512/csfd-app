@@ -1,29 +1,49 @@
 {block content}
-    <p><a n:href="Homepage:default">← zpět na výpis filmů</a></p>
-    <h1 n:block="title">{$movie->title} <span class="year">({$movie->year})</span></h1>
+    <div class="detail-movie">
+        <a n:href="Homepage:default" class="movie-button waves-effect waves-light btn">
+            <i class="material-icons left">arrow_back</i>
+            zpět na výpis filmů
+        </a>
 
-    <a n:href="Movie:edit $movie->id">Upravit film</a>
-    <a n:href="removeMovie! $movie->id">Smazat film</a>
 
-    <div class="movie-detail">
-        <img src="{$movie->photo}" alt="obrázek {$movie->title}">
-        <div class="json-detail genres">
-            {foreach $genres as $genre}
-                <div class="genre">{$genre}</div>
-            {/foreach}
+        <div class="detail-header">
+            <h1 n:block="title">
+                {$movie->title}
+                <span class="year">({$movie->year})</span>
+            </h1>
+
+            <div class="detail-btns">
+                <a n:href="Movie:edit $movie->id" class="movie-button waves-effect waves-light btn">
+                    <i class="material-icons left">create</i>Upravit film</a>
+                <a n:href="removeMovie! $movie->id" class="movie-button waves-effect waves-light btn">
+                    <i class="material-icons left">delete</i>Smazat film</a>
+            </div>
         </div>
-        <div class="description"> {$movie->description} </div>
-        <div class="json-detail directors">
-            <h3>Režiséři: </h3>
-            {foreach $directors as $director}
-                <div class="director">{$director} </div>
-            {/foreach}
-        </div>
-        <div class="json-detail actors">
-            <h3>Herci:</h3>
-            {foreach $actors as $actor}
-                <div class="actor">{$actor} </div>
-            {/foreach}
+
+        <div class="detail-body">
+            <img src="{$movie->photo}" alt="obrázek {$movie->title}">
+
+            <div class="detail-content">
+                <div class="json-detail genres">
+                    {foreach $genres as $genre}
+                        <div class="genre">{$genre}</div>
+                    {/foreach}
+                </div>
+                <div class="description"> {$movie->description} </div>
+                <div class="json-detail directors">
+                    <h3>Režiséři: </h3>
+                    {foreach $directors as $director}
+                        <div class="director">{$director} </div>
+                    {/foreach}
+                </div>
+                <div class="json-detail actors">
+                    <h3>Herci:</h3>
+                    {foreach $actors as $actor}
+                        <div class="actor">{$actor} </div>
+                    {/foreach}
+                </div>
+            </div>
+
         </div>
     </div>
 {/block}

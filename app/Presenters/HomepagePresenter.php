@@ -28,7 +28,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
             ->setPage($page);
         $this->template->movies = $this->facade->getMovies($paginator->getLength(), $paginator->getOffset());
         $this->template->paginator = $paginator;
-        $this->template->itemsCount = [12, 24, 36];
+        $this->template->itemsCount = [8, 16, 32];
         $this->template->itemsPerPage = $itemsPerPage;
     }
 }

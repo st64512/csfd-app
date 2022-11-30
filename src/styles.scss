@@ -1,7 +1,9 @@
 $blueColor: #58589d;
 $LightBlueColor: #dbdbf3;
-$DarkBlueColor: #45457e;
+$DarkerBlueColor: #3c3c70;
+$DarkBlueColor: #33335d;
 $whiteColor: #fff;
+$DarkestGreyColor: #151515;
 $DarkGreyColor: #3a3a3a;
 $GreyColor: #606060;
 $LightGreyColor: #eeeeee;
@@ -9,6 +11,14 @@ $LightGreyColor: #eeeeee;
 html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+
+  .movie-button {
+    background-color: $blueColor;
+
+    &:focus, &:hover {
+      background-color: $DarkerBlueColor;
+    }
+  }
 
   .main {
     margin: 30px;
@@ -20,9 +30,6 @@ html {
     .list {
       .list-header {
         margin: 15px;
-        #add-brand-button {
-          background-color: $blueColor;
-        }
       }
       .list-body {
         display: inline-block;
@@ -104,6 +111,70 @@ html {
       position: absolute;
       background-color: white;
       width: 100%;
+    }
+  }
+}
+
+.detail-movie {
+  margin: 50px;
+
+  .detail-header {
+    font-size: 50px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: $DarkBlueColor;
+    color: $LightBlueColor;
+    display: table;
+    width: 100%;
+    height: 74px;
+    h1 {
+      width: 50%;
+      float: left;
+      margin: 0;
+      padding-left: 40px;
+      font-size: 40px;
+      .year {
+        color: $LightGreyColor;
+      }
+    }
+
+    .detail-btns {
+      width: 50%;
+      float: right;
+      padding-right: 40px;
+      display: flex;
+      justify-content: right;
+      height: 100%;
+      align-items: center;
+      a {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .detail-body {
+    background-color: $DarkGreyColor;
+    img {
+      width: calc(100vw - 117px);
+    }
+    .detail-content {
+      padding: 25px 49px;
+      color: $LightGreyColor;
+
+      .genres {
+        width: 100%;
+        display: table;
+        margin-bottom: 25px;
+        .genre {
+          float: left;
+          font-size: 20px;
+          background-color: $DarkestGreyColor;
+          border-radius: 15%;
+          padding: 5px 10px;
+          margin-bottom: 5px;
+          margin-right: 5px;
+        }
+      }
     }
   }
 }

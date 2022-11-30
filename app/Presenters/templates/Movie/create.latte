@@ -1,14 +1,20 @@
 {block content}
-<h1>Nový film</h1>
 
-<div class="dropdown">
-    <label for="movie-search">Vyhledejte film z ČSFD:</label>
-    <input type="text" id="movie-search" placeholder="Název filmu...">
-    <div id="search-results" class="dropdown-content">
-        <ul id="results">
-        </ul>
+<div class="create-movie">
+    <a n:href="Homepage:default" class="movie-button waves-effect waves-light btn">
+        <i class="material-icons left">arrow_back</i>
+        zpět na výpis filmů
+    </a>
+    <h1>Nový film</h1>
+
+    <div class="dropdown">
+        <label for="movie-search">Vyhledejte film z ČSFD:</label>
+        <input type="text" id="movie-search" placeholder="Název filmu...">
+        <div id="search-results" class="dropdown-content">
+            <ul id="results">
+            </ul>
+        </div>
     </div>
 </div>
-
 
 {control movieForm}
